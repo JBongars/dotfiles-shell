@@ -101,5 +101,5 @@ EOF
 export TERM_HELP_TEXT
 
 help() {
-  echo "$TERM_HELP_TEXT"
+  echo "$TERM_HELP_TEXT" | less
 }

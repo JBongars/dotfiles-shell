@@ -18,10 +18,6 @@
 # ══════════════════════════════════════════════════
 
 
-# /home/julien/.config/shell/src/zshrc/linux/.gitkeep
-# ──────────────────────────────────────────────────
-
-
 # /home/julien/.config/shell/src/zshrc/unified/100-config.zsh
 # ──────────────────────────────────────────────────
 
@@ -155,7 +151,7 @@ EOF
 export TERM_HELP_TEXT
 
 help() {
-  echo "$TERM_HELP_TEXT"
+  echo "$TERM_HELP_TEXT" | less
 }
 
 # /home/julien/.config/shell/src/zshrc/unified/300-source-bashrc.zsh
@@ -229,3 +225,7 @@ else
     PROMPT='┌──[%n@%m]─[%~]
 └──╼ %# '
 fi
+
+# /home/julien/.config/shell/src/zshrc/linux/.gitkeep
+# ──────────────────────────────────────────────────
+

@@ -157,7 +157,7 @@ EOF
 export TERM_HELP_TEXT
 
 help() {
-  echo "$TERM_HELP_TEXT"
+  echo "$TERM_HELP_TEXT" | less
 }
 
 # /home/julien/.config/shell/src/zshrc/unified/300-source-bashrc.zsh
