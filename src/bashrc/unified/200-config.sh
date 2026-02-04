@@ -8,9 +8,6 @@
 #         \/            \/        /_____/  
 # ----------------------------------
 
-# wildcards should match hidden files by default
-shopt -s dotglob
-
 # Setup environment
 if [[ -n "$BASH_VERSION" ]]; then
   # wildcards should match hidden files by default

@@ -58,43 +58,6 @@ export HISTSIZE=100000
 export HISTFILESIZE=200000
 export HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S"
 
-# /home/julien/.config/shell/src/bashrc/macos/101-environment.sh
-# ──────────────────────────────────────────────────
-
-# export brew in path
-export PATH="$PATH:/opt/homebrew/bin"
-
-# export xcode binaries to path
-export PATH="$PATH:/Applications/Xcode.app/Contents/Developer/usr/bin"
-
-# brew linked files
-export PATH="$PATH:/opt/homebrew/opt/openjdk/bin"
-export PATH="$PATH:/opt/homebrew/opt/openjdk@11/bin"
-
-# override newer bsah to replace mac bash
-export PATH="/opt/bin/bash:$PATH"
-
-# export PATH="$PATH:/opt/homebrew/Caskroom/powershell/7.5.2"
-
-# android stuff
-function init_android(){
-  export ANDROID_HOME=$HOME/Library/Android/sdk
-  export PATH=$PATH:$ANDROID_HOME/tools
-  export PATH=$PATH:$ANDROID_HOME/tools/bin
-  export PATH=$PATH:$ANDROID_HOME/platform-tools
-  export PATH=$PATH:$ANDROID_HOME/emulator
-}
-
-# Postgres
-PATH="/opt/homebrew/Cellar/postgresql@17/17.7/bin:$PATH"
-
-# AWS CLI completion
-complete -C "/opt/homebrew/bin/aws_completer" aws
-
-# Setup TFenv: https://github.com/tfutils/tfenv
-export PATH="$HOME/.tfenv/bin:$PATH"
-
-
 # /home/julien/.config/shell/src/bashrc/unified/200-config.sh
 # ──────────────────────────────────────────────────
 
@@ -117,6 +80,14 @@ if [[ -n "$BASH_VERSION" ]]; then
   [[ $- != *i* ]] && return
 fi
 
+
+# /home/julien/.config/shell/src/bashrc/linux/201-config-compositor.sh
+# ──────────────────────────────────────────────────
+
+if [[ -n "$WAYLAND_DISPLAY" ]]; then
+    export XDG_CURRENT_DESKTOP=sway
+    export XDG_SESSION_DESKTOP=sway
+fi
 
 # /home/julien/.config/shell/src/bashrc/unified/300-aliases.sh
 # ──────────────────────────────────────────────────
@@ -209,32 +180,16 @@ alias rg="rg -p -uu"
 # timestamp with format
 alias timestamp='date +"%Y%m%d%H%M%S"'
 
-# /home/julien/.config/shell/src/bashrc/macos/301-aliases.sh
+# /home/julien/.config/shell/src/bashrc/linux/301-aliases.sh
 # ──────────────────────────────────────────────────
 
-# Get correct path for nvm
-function nvm() {
-  if [ -z $NVM_DIR ]; then 
-    export NVM_DIR="$HOME/.nvm"
-    [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-    [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-  fi
-
-  "/opt/homebrew/opt/nvm/nvm.sh" $@
-}
-
-# Get correct path for pyenv
-function pyenv() {
-  if [ -z $PYENV_ROOT ]; then
-    export PYENV_ROOT="$HOME/.pyenv"
-    [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-    eval "$(pyenv init -)"
-  fi
-
-  command "/opt/homebrew/bin/pyenv" "$@" 
-}
-
-alias tfi="tfenv install min-required && tfenv use min-required && terraform init"
+if [[ -n "$WAYLAND_DISPLAY" ]]; then
+    alias pbcopy='wl-copy'
+    alias pbpaste='wl-paste'
+elif command -v xclip &>/dev/null; then
+    alias pbcopy='xclip -selection clipboard'
+    alias pbpaste='xclip -selection clipboard -o'
+fi
 
 # /home/julien/.config/shell/src/bashrc/unified/400-plugins.sh
 # ──────────────────────────────────────────────────

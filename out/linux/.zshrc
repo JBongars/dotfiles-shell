@@ -18,6 +18,10 @@
 # ══════════════════════════════════════════════════
 
 
+# /home/julien/.config/shell/src/zshrc/linux/.gitkeep
+# ──────────────────────────────────────────────────
+
+
 # /home/julien/.config/shell/src/zshrc/unified/100-config.zsh
 # ──────────────────────────────────────────────────
 
@@ -44,12 +48,6 @@ bindkey '^L' forward-word
 bindkey '^[H' backward-kill-word  # Alt-h
 bindkey '^[L' kill-word           # Alt-l
 
-
-# /home/julien/.config/shell/src/zshrc/macos/101-mac-config.zsh
-# ──────────────────────────────────────────────────
-
-
-bindkey "^[[3~" delete-char # Mac sends the wrong character sequence for Del key
 
 # /home/julien/.config/shell/src/zshrc/unified/200-help.zsh
 # ──────────────────────────────────────────────────
@@ -200,25 +198,6 @@ autoload -Uz compinit && compinit -i
 eval "$(atuin init zsh)"
 eval "$(atuin gen-completions --shell zsh)"
 
-
-# /home/julien/.config/shell/src/zshrc/macos/401-plugins.zsh
-# ──────────────────────────────────────────────────
-
-# docker autocomplete
-source <(docker completion zsh)
-
-# SDKman initialization
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-# Terraform completion
-complete -o nospace -C $(which terraform) terraform
-
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/julien/.docker/completions $fpath)
-autoload -Uz compinit
-compinit
-# End of Docker CLI completions
 
 # /home/julien/.config/shell/src/zshrc/unified/500-post-init.zsh
 # ──────────────────────────────────────────────────

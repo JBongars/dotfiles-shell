@@ -39,8 +39,9 @@ fi
 
 # Check bfs is installed
 if command -v bfs &>/dev/null; then
-    echo "[WARN] BFS is not installed. Using fallback gnu-find"
     alias find="bfs"
+else 
+    echo "[WARN] BFS is not installed. Using fallback gnu-find"
 fi
 
 # Misc funcions

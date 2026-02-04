@@ -2,63 +2,68 @@
 
 BASE_CONFIG_PATH="$(cd "$(dirname "$0")" && pwd)"
 BASE_SOURCE_PATH="${BASE_CONFIG_PATH}/src"
-UNIFIED_CONFIG_PATH="${BASE_SOURCE_PATH}/unified/config"
+
+PLATFORMS=("linux" "macos")
+# TARGETS=("bashrc" "zshrc" "bash_profile")
+TARGETS=("bashrc" "zshrc")
+
+COMMAND="$1"
+
+function cat_config() {
+    local base_target_path=$1
+    local platform=$2
+
+    find "${base_target_path}/unified" -name '000-banner.*' -exec cat {} +
+    echo "# GENERATED AUTOMATICALLY - DO NOT EDIT"
+    echo "# $(printf '═%.0s' {1..50})"
+    echo ""
+    {
+        find "${base_target_path}/unified" -type f
+        find "${base_target_path}/${platform}" -type f
+    } | while read -r f; do
+        printf '%s\t%s\n' "$(basename "$f")" "$f"
+    done | grep -v '000-banner' | sort | cut -f2- | while read -r f; do    
+        echo ""
+        echo "# $f"
+        echo "# $(printf '─%.0s' {1..50})"
+        echo ""
+        cat "$f"
+    done
+}
 
 function generate_config(){
-    local de=$1
-    {
-        echo "#"
-        figlet -f small "sway/i3 config" | sed 's/^/# /'
-        echo "# GENERATED AUTOMATICALLY - DO NOT EDIT"
-        echo "# $(printf '═%.0s' {1..50})"
-        echo ""
-        {
-            find "${DE_CONFIG_PATH}" -type f -printf '%f\t%p\n'
-            find "${UNIFIED_CONFIG_PATH}" -type f -printf '%f\t%p\n'
-        } | sort | cut -f2- | while read -r f; do    
-            echo ""
-            # figlet -f small "${f##*/}" | sed 's/^/# /'
-            echo "# $f"
-            echo "# $(printf '─%.0s' {1..50})"
-            echo ""
-            cat "$f"
+    local target=$1
+    local platform=$2
+    local base_target_path="${BASE_SOURCE_PATH}/${target}"
+    local base_target_out="${BASE_CONFIG_PATH}/out/${platform}"
+    local base_target_out_file="${base_target_out}/.$target"
+
+    # Check if target is supported on platform
+    if [ ! -d "${base_target_path}/${platform}" ] ; then
+        exit 0
+    fi
+
+    # Check if out folder exists
+    if [ ! -d "${base_target_out}" ] ; then
+        mkdir "${base_target_out}"
+    fi
+
+    ( cat_config "$base_target_path" "$platform" )> "${base_target_out_file}"
+}
+
+function main() {
+    for target in "${TARGETS[@]}" ; do
+        echo "generating $target..."
+        for platform in "${PLATFORMS[@]}" ; do
+            echo "    - $platform"
+            generate_config "$target" "$platform"
         done
-    } > "${BASE_CONFIG_PATH}/config"
+    done
+
+    if [ "$COMMAND" = "install" ]; then
+        exec bash "$BASE_CONFIG_PATH/install.sh"
+    fi
 }
 
-function install(){
-    local de="$1"
-    ( cd "${BASE_SOURCE_PATH}/${de}" && \
-        stow -R -t $BASE_CONFIG_PATH dotfiles
-        stow -R -t "${BASE_CONFIG_PATH}/scripts" --adopt scripts && chmod -R +x "${BASE_CONFIG_PATH}/scripts"
-    )
-}
+main
 
-function install_sway() {
-    install "unified"
-    install "sway"
-    ( cd "${HOME}/.config" && ln --symbolic "$BASE_SOURCE_PATH/sway/dotfiles/.avizo" "./avizo" 2> >(sed 's/^/WARNING: /') )
-
-
-}
-
-function install_i3() {
-    install "unified"
-    install "i3"
-}
-
-[ -d "${BASE_CONFIG_PATH}/scripts" ] || mkdir "${BASE_CONFIG_PATH}/scripts"
-
-if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-    DE="sway"
-    DE_CONFIG_PATH="${BASE_SOURCE_PATH}/sway/config"
-
-    generate_config
-    install_sway
-else
-    DE="i3"
-    DE_CONFIG_PATH="${BASE_SOURCE_PATH}/i3/config"
-
-    generate_config
-    install_i3
-fi
