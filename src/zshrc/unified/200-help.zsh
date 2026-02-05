@@ -93,10 +93,9 @@ Keybindings
 Ctrl-A / Ctrl-E     beginning / end of line             Ctrl-R / Ctrl-S     history search back/fwd
 Ctrl-U / Ctrl-K     kill to beginning / end             Ctrl-L              clear screen
 Ctrl-W              kill word backward                  Ctrl-Z              suspend process
-Alt-D               kill word forward                   Ctrl-C              interrupt
-Alt-H / Alt-L       kill word back / fwd (custom)       Tab                 autocomplete
-                                                        Alt-.               insert last argument
-
+Alt-B / Alt-F       word backward / forward             Ctrl-C              interrupt
+Alt-D               kill word forward                   Tab                 autocomplete
+Alt-Backspace       kill word backward                  Alt-.               insert last argument
 EOF
 export TERM_HELP_TEXT
 

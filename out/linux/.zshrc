@@ -32,18 +32,22 @@
 setopt GLOB_DOTS
 [[ ! -o interactive ]] && return
 
-bindkey '^[[A' up-line-or-history
-bindkey '^[[B' down-line-or-history
+bindkey "^[[3~" delete-char
 
 # start in emacs mode
 bindkey -e
 
-# Try both common ways to bind Ctrl+Q
-bindkey '^H' backward-word
-bindkey '^L' forward-word
-bindkey '^[H' backward-kill-word  # Alt-h
-bindkey '^[L' kill-word           # Alt-l
+# Normal defaults for moving around text
+# bindkey "^[b"    backward-word      # Alt+b (back)
+# bindkey "^[f"    forward-word       # Alt+f (forward)
+# bindkey "^[d"    kill-word          # Alt+d (delete forward)
+# bindkey "^[^h"   backward-kill-word # Alt+Backspace (or Alt+Ctrl+h)
 
+setopt EXTENDED_HISTORY       # saves timestamp + duration per command
+
+HISTSIZE=100000
+SAVEHIST=100000
+HISTFILE=~/.zsh_history
 
 # /home/julien/.config/shell/src/zshrc/unified/200-help.zsh
 # ──────────────────────────────────────────────────
@@ -143,10 +147,9 @@ Keybindings
 Ctrl-A / Ctrl-E     beginning / end of line             Ctrl-R / Ctrl-S     history search back/fwd
 Ctrl-U / Ctrl-K     kill to beginning / end             Ctrl-L              clear screen
 Ctrl-W              kill word backward                  Ctrl-Z              suspend process
-Alt-D               kill word forward                   Ctrl-C              interrupt
-Alt-H / Alt-L       kill word back / fwd (custom)       Tab                 autocomplete
-                                                        Alt-.               insert last argument
-
+Alt-B / Alt-F       word backward / forward             Ctrl-C              interrupt
+Alt-D               kill word forward                   Tab                 autocomplete
+Alt-Backspace       kill word backward                  Alt-.               insert last argument
 EOF
 export TERM_HELP_TEXT
 
@@ -218,13 +221,18 @@ if [[ -x /usr/bin/tput ]] && tput setaf 1 &>/dev/null; then
         PROMPT='%F{red}┌─[%F{red}%Broot%b%F{yellow}@%F{cyan}%m%F{red}]─[%F{green}%~%F{red}]
 └──╼ %F{yellow}#%f '
     else
-        PROMPT='%F{red}┌─%(?..[%F{white}✗%F{red}]─)[%f%n%F{yellow}@%F{cyan}%m%F{red}]─[%F{green}%~%F{red}]
+        PROMPT='%F{magenta}┌─%(?..[%F{white}✗%F{magenta}]─)[%f%n%F{yellow}@%F{cyan}%m%F{magenta}]─[%F{green}%~%F{magenta}]
 └──╼ %F{yellow}$%f '
     fi
 else
     PROMPT='┌──[%n@%m]─[%~]
 └──╼ %# '
 fi
+
+# reset overrides from atuin
+# use arrow keys to got up and down in history
+bindkey '^[[A' up-line-or-history
+bindkey '^[[B' down-line-or-history
 
 # /home/julien/.config/shell/src/zshrc/linux/.gitkeep
 # ──────────────────────────────────────────────────

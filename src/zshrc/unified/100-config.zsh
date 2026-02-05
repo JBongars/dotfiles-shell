@@ -9,15 +9,19 @@
 setopt GLOB_DOTS
 [[ ! -o interactive ]] && return
 
-bindkey '^[[A' up-line-or-history
-bindkey '^[[B' down-line-or-history
+bindkey "^[[3~" delete-char
 
 # start in emacs mode
 bindkey -e
 
-# Try both common ways to bind Ctrl+Q
-bindkey '^H' backward-word
-bindkey '^L' forward-word
-bindkey '^[H' backward-kill-word  # Alt-h
-bindkey '^[L' kill-word           # Alt-l
+# Normal defaults for moving around text
+# bindkey "^[b"    backward-word      # Alt+b (back)
+# bindkey "^[f"    forward-word       # Alt+f (forward)
+# bindkey "^[d"    kill-word          # Alt+d (delete forward)
+# bindkey "^[^h"   backward-kill-word # Alt+Backspace (or Alt+Ctrl+h)
 
+setopt EXTENDED_HISTORY       # saves timestamp + duration per command
+
+HISTSIZE=100000
+SAVEHIST=100000
+HISTFILE=~/.zsh_history

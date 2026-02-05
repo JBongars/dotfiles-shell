@@ -18,10 +18,15 @@ if [[ -x /usr/bin/tput ]] && tput setaf 1 &>/dev/null; then
         PROMPT='%F{red}┌─[%F{red}%Broot%b%F{yellow}@%F{cyan}%m%F{red}]─[%F{green}%~%F{red}]
 └──╼ %F{yellow}#%f '
     else
-        PROMPT='%F{red}┌─%(?..[%F{white}✗%F{red}]─)[%f%n%F{yellow}@%F{cyan}%m%F{red}]─[%F{green}%~%F{red}]
+        PROMPT='%F{magenta}┌─%(?..[%F{white}✗%F{magenta}]─)[%f%n%F{yellow}@%F{cyan}%m%F{magenta}]─[%F{green}%~%F{magenta}]
 └──╼ %F{yellow}$%f '
     fi
 else
     PROMPT='┌──[%n@%m]─[%~]
 └──╼ %# '
 fi
+
+# reset overrides from atuin
+# use arrow keys to got up and down in history
+bindkey '^[[A' up-line-or-history
+bindkey '^[[B' down-line-or-history
