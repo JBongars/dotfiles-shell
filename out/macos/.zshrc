@@ -258,3 +258,5 @@ fi
 # use arrow keys to got up and down in history
 bindkey '^[[A' up-line-or-history
 bindkey '^[[B' down-line-or-history
+
+bindkey "^[[3~" delete-char

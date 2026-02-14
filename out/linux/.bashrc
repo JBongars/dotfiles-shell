@@ -191,6 +191,19 @@ elif command -v xclip &>/dev/null; then
     alias pbpaste='xclip -selection clipboard -o'
 fi
 
+# /home/julien/.config/shell/src/bashrc/linux/301-hacklas-aliases.sh
+# ──────────────────────────────────────────────────
+
+#   ___ ___                __   .__                 
+#  /   |   \_____    ____ |  | _|  | _____    ______
+# /    ~    \__  \ _/ ___\|  |/ /  | \__  \  /  ___/
+# \    Y    // __ \\  \___|    <|  |__/ __ \_\___ \ 
+#  \___|_  /(____  /\___  >__|_ \____(____  /____  >
+#        \/      \/     \/     \/         \/     \/ 
+# ----------------------------------
+
+
+
 # /home/julien/.config/shell/src/bashrc/unified/400-plugins.sh
 # ──────────────────────────────────────────────────
 
