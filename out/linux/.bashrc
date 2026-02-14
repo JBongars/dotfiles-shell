@@ -191,7 +191,7 @@ elif command -v xclip &>/dev/null; then
     alias pbpaste='xclip -selection clipboard -o'
 fi
 
-# /home/julien/.config/shell/src/bashrc/linux/301-hacklas-aliases.sh
+# /home/julien/.config/shell/src/bashrc/linux/302-hacklas-aliases.sh
 # ──────────────────────────────────────────────────
 
 #   ___ ___                __   .__                 
@@ -202,6 +202,26 @@ fi
 #        \/      \/     \/     \/         \/     \/ 
 # ----------------------------------
 
+function base64wrap(){
+    echo "echo -n '$(base64 -w0)' | base64 -d | bash"
+}
+
+function urlencode(){
+    python3 -c "import sys,urllib.parse;print(urllib.parse.quote(sys.stdin.read().strip(),safe=''))"
+}
+
+alias gtt="cd \"$(cat ~/.hacklas/.current-target)\""
+
+# BLACKLISTED FUNCTIONS!
+
+alias gobuster='echo "STOP USING GOBUSTER! Use the following:-
+
+gobuster dir -w wordlist -u hostname
+feroxbuster -w wordlist -u hostname
+
+gobuster vhost -w wordlist -u hostname
+ffuf -w wordlist -u hostname -H \"Host: FUZZ.hostname\"
+"'
 
 
 # /home/julien/.config/shell/src/bashrc/unified/400-plugins.sh

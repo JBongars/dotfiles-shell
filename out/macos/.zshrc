@@ -200,7 +200,7 @@ autoload -Uz compinit && compinit -i
 
 . "$HOME/.atuin/bin/env"
 
-eval "$(atuin init zsh)"
+eval "$(atuin init --disable-up-arrow zsh)"
 eval "$(atuin gen-completions --shell zsh)"
 
 
