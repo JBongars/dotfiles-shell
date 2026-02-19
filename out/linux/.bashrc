@@ -20,7 +20,7 @@
 # ══════════════════════════════════════════════════
 
 
-# /home/julien/.config/shell/src/bashrc/unified/100-environment.sh
+# /Users/julien/.config/shell/src/bashrc/unified/100-environment.sh
 # ──────────────────────────────────────────────────
 
 # ___________            
@@ -58,7 +58,7 @@ export HISTSIZE=100000
 export HISTFILESIZE=200000
 export HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S"
 
-# /home/julien/.config/shell/src/bashrc/unified/200-config.sh
+# /Users/julien/.config/shell/src/bashrc/unified/200-config.sh
 # ──────────────────────────────────────────────────
 
 #
@@ -80,8 +80,7 @@ if [[ -n "$BASH_VERSION" ]]; then
   [[ $- != *i* ]] && return
 fi
 
-
-# /home/julien/.config/shell/src/bashrc/linux/201-config-compositor.sh
+# /Users/julien/.config/shell/src/bashrc/linux/201-config-compositor.sh
 # ──────────────────────────────────────────────────
 
 if [[ -n "$WAYLAND_DISPLAY" ]]; then
@@ -89,7 +88,7 @@ if [[ -n "$WAYLAND_DISPLAY" ]]; then
     export XDG_SESSION_DESKTOP=sway
 fi
 
-# /home/julien/.config/shell/src/bashrc/unified/300-aliases.sh
+# /Users/julien/.config/shell/src/bashrc/unified/300-aliases.sh
 # ──────────────────────────────────────────────────
 
 #    _____  .__  .__                             
@@ -180,7 +179,7 @@ alias rg="rg -p -uu"
 # timestamp with format
 alias timestamp='date +"%Y%m%d%H%M%S"'
 
-# /home/julien/.config/shell/src/bashrc/linux/301-aliases.sh
+# /Users/julien/.config/shell/src/bashrc/linux/301-aliases.sh
 # ──────────────────────────────────────────────────
 
 if [[ -n "$WAYLAND_DISPLAY" ]]; then
@@ -191,7 +190,7 @@ elif command -v xclip &>/dev/null; then
     alias pbpaste='xclip -selection clipboard -o'
 fi
 
-# /home/julien/.config/shell/src/bashrc/linux/302-hacklas-aliases.sh
+# /Users/julien/.config/shell/src/bashrc/linux/302-hacklas-aliases.sh
 # ──────────────────────────────────────────────────
 
 #   ___ ___                __   .__                 
@@ -225,7 +224,7 @@ ffuf -w wordlist -u hostname -H \"Host: FUZZ.hostname\"
 "'
 
 
-# /home/julien/.config/shell/src/bashrc/unified/400-plugins.sh
+# /Users/julien/.config/shell/src/bashrc/unified/400-plugins.sh
 # ──────────────────────────────────────────────────
 
 # __________.__               .__               
@@ -252,7 +251,7 @@ if [[ -f "$HOME/.atuin/bin/env" ]]; then
     fi
 fi
 
-# /home/julien/.config/shell/src/bashrc/unified/500-post-init.sh
+# /Users/julien/.config/shell/src/bashrc/unified/500-post-init.sh
 # ──────────────────────────────────────────────────
 
 # __________               __            .__       .__  __   

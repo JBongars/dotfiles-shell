@@ -25,3 +25,7 @@ setopt EXTENDED_HISTORY       # saves timestamp + duration per command
 HISTSIZE=100000
 SAVEHIST=100000
 HISTFILE=~/.zsh_history
+
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
+

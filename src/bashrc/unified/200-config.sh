@@ -16,4 +16,3 @@ if [[ -n "$BASH_VERSION" ]]; then
   # If not running interactively, don't do anything
   [[ $- != *i* ]] && return
 fi
-

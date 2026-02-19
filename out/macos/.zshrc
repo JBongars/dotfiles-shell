@@ -18,7 +18,7 @@
 # ══════════════════════════════════════════════════
 
 
-# /home/julien/.config/shell/src/zshrc/unified/100-config.zsh
+# /Users/julien/.config/shell/src/zshrc/unified/100-config.zsh
 # ──────────────────────────────────────────────────
 
 # _________                _____.__        
@@ -49,13 +49,17 @@ HISTSIZE=100000
 SAVEHIST=100000
 HISTFILE=~/.zsh_history
 
-# /home/julien/.config/shell/src/zshrc/macos/101-mac-config.zsh
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
+
+
+# /Users/julien/.config/shell/src/zshrc/macos/101-mac-config.zsh
 # ──────────────────────────────────────────────────
 
 
 bindkey "^[[3~" delete-char # Mac sends the wrong character sequence for Del key
 
-# /home/julien/.config/shell/src/zshrc/unified/200-help.zsh
+# /Users/julien/.config/shell/src/zshrc/unified/200-help.zsh
 # ──────────────────────────────────────────────────
 
 #   ___ ___         .__          
@@ -163,7 +167,7 @@ help() {
   echo "$TERM_HELP_TEXT" | less
 }
 
-# /home/julien/.config/shell/src/zshrc/unified/300-source-bashrc.zsh
+# /Users/julien/.config/shell/src/zshrc/unified/300-source-bashrc.zsh
 # ──────────────────────────────────────────────────
 
 # __________               .__                   
@@ -176,7 +180,7 @@ help() {
 #
 [[ -f ~/.bashrc ]] && source ~/.bashrc
 
-# /home/julien/.config/shell/src/zshrc/unified/400-plugins.zsh
+# /Users/julien/.config/shell/src/zshrc/unified/400-plugins.zsh
 # ──────────────────────────────────────────────────
 
 # __________.__               .__               
@@ -198,13 +202,15 @@ autoload -Uz compinit && compinit -i
 # curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
 #
 
-. "$HOME/.atuin/bin/env"
+if [ -f "$HOME/.atuin/bin/env" ] ; then 
+    . "$HOME/.atuin/bin/env"
+fi
 
 eval "$(atuin init --disable-up-arrow zsh)"
 eval "$(atuin gen-completions --shell zsh)"
 
 
-# /home/julien/.config/shell/src/zshrc/macos/401-plugins.zsh
+# /Users/julien/.config/shell/src/zshrc/macos/401-plugins.zsh
 # ──────────────────────────────────────────────────
 
 # docker autocomplete
@@ -223,7 +229,7 @@ autoload -Uz compinit
 compinit
 # End of Docker CLI completions
 
-# /home/julien/.config/shell/src/zshrc/unified/500-post-init.zsh
+# /Users/julien/.config/shell/src/zshrc/unified/500-post-init.zsh
 # ──────────────────────────────────────────────────
 
 # __________               __            .__       .__  __   

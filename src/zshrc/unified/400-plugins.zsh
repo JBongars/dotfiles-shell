@@ -17,7 +17,9 @@ autoload -Uz compinit && compinit -i
 # curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
 #
 
-. "$HOME/.atuin/bin/env"
+if [ -f "$HOME/.atuin/bin/env" ] ; then 
+    . "$HOME/.atuin/bin/env"
+fi
 
 eval "$(atuin init --disable-up-arrow zsh)"
 eval "$(atuin gen-completions --shell zsh)"

@@ -20,7 +20,7 @@
 # ══════════════════════════════════════════════════
 
 
-# /home/julien/.config/shell/src/bashrc/unified/100-environment.sh
+# /Users/julien/.config/shell/src/bashrc/unified/100-environment.sh
 # ──────────────────────────────────────────────────
 
 # ___________            
@@ -58,7 +58,7 @@ export HISTSIZE=100000
 export HISTFILESIZE=200000
 export HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S"
 
-# /home/julien/.config/shell/src/bashrc/macos/101-environment.sh
+# /Users/julien/.config/shell/src/bashrc/macos/101-environment.sh
 # ──────────────────────────────────────────────────
 
 # export brew in path
@@ -95,7 +95,7 @@ complete -C "/opt/homebrew/bin/aws_completer" aws
 export PATH="$HOME/.tfenv/bin:$PATH"
 
 
-# /home/julien/.config/shell/src/bashrc/unified/200-config.sh
+# /Users/julien/.config/shell/src/bashrc/unified/200-config.sh
 # ──────────────────────────────────────────────────
 
 #
@@ -117,8 +117,7 @@ if [[ -n "$BASH_VERSION" ]]; then
   [[ $- != *i* ]] && return
 fi
 
-
-# /home/julien/.config/shell/src/bashrc/unified/300-aliases.sh
+# /Users/julien/.config/shell/src/bashrc/unified/300-aliases.sh
 # ──────────────────────────────────────────────────
 
 #    _____  .__  .__                             
@@ -209,7 +208,7 @@ alias rg="rg -p -uu"
 # timestamp with format
 alias timestamp='date +"%Y%m%d%H%M%S"'
 
-# /home/julien/.config/shell/src/bashrc/macos/301-aliases.sh
+# /Users/julien/.config/shell/src/bashrc/macos/301-aliases.sh
 # ──────────────────────────────────────────────────
 
 # Get correct path for nvm
@@ -236,7 +235,7 @@ function pyenv() {
 
 alias tfi="tfenv install min-required && tfenv use min-required && terraform init"
 
-# /home/julien/.config/shell/src/bashrc/unified/400-plugins.sh
+# /Users/julien/.config/shell/src/bashrc/unified/400-plugins.sh
 # ──────────────────────────────────────────────────
 
 # __________.__               .__               
@@ -263,7 +262,7 @@ if [[ -f "$HOME/.atuin/bin/env" ]]; then
     fi
 fi
 
-# /home/julien/.config/shell/src/bashrc/unified/500-post-init.sh
+# /Users/julien/.config/shell/src/bashrc/unified/500-post-init.sh
 # ──────────────────────────────────────────────────
 
 # __________               __            .__       .__  __   
