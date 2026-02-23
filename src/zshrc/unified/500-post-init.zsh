@@ -9,7 +9,6 @@
 # Post init custom scripts
 # PROMPT='[%F{cyan}%n%f@%F{cyan}%m%f %F{magenta}%1~%f]%# '
 
-autoload -Uz compinit && compinit -i
 autoload -U +X bashcompinit && bashcompinit
 
 # Enable color if terminal supports it
