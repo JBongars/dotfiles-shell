@@ -53,8 +53,8 @@ HISTSIZE=100000
 SAVEHIST=100000
 HISTFILE=~/.zsh_history
 
-autoload bashcompinit && bashcompinit
-autoload -Uz compinit && compinit
+autoload -Uz compinit && compinit -i
+autoload -U +X bashcompinit && bashcompinit
 
 
 # /Users/julien/.config/shell/src/zshrc/unified/200-help.zsh
@@ -191,8 +191,6 @@ help() {
 
 # load plugins after bashrc
 fpath=(~/.zsh/completion $fpath)
-autoload -Uz compinit && compinit -i
-
 
 # atuin (https://atuin.sh/)
 #
@@ -207,7 +205,8 @@ fi
 eval "$(atuin init --disable-up-arrow zsh)"
 eval "$(atuin gen-completions --shell zsh)"
 
-# /home/julien/.config/shell/src/zshrc/linux/401-hacklas-plugins.zsh
+
+# /Users/julien/.config/shell/src/zshrc/linux/401-hacklas-plugins.zsh
 # ──────────────────────────────────────────────────
 
 #   ___ ___                __   .__                 
@@ -228,8 +227,6 @@ _h_completions() {
 }
 compdef _h_completions h
 
-
-
 # /Users/julien/.config/shell/src/zshrc/unified/500-post-init.zsh
 # ──────────────────────────────────────────────────
 
@@ -243,8 +240,6 @@ compdef _h_completions h
 
 # Post init custom scripts
 # PROMPT='[%F{cyan}%n%f@%F{cyan}%m%f %F{magenta}%1~%f]%# '
-
-autoload -U +X bashcompinit && bashcompinit
 
 # Enable color if terminal supports it
 if [[ -x /usr/bin/tput ]] && tput setaf 1 &>/dev/null; then

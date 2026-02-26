@@ -26,6 +26,6 @@ HISTSIZE=100000
 SAVEHIST=100000
 HISTFILE=~/.zsh_history
 
-autoload bashcompinit && bashcompinit
-autoload -Uz compinit && compinit
+autoload -Uz compinit && compinit -i
+autoload -U +X bashcompinit && bashcompinit
 

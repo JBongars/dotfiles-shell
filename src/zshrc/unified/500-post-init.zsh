@@ -9,8 +9,6 @@
 # Post init custom scripts
 # PROMPT='[%F{cyan}%n%f@%F{cyan}%m%f %F{magenta}%1~%f]%# '
 
-autoload -U +X bashcompinit && bashcompinit
-
 # Enable color if terminal supports it
 if [[ -x /usr/bin/tput ]] && tput setaf 1 &>/dev/null; then
     if [[ ${EUID} == 0 ]]; then

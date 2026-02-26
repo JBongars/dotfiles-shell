@@ -8,8 +8,6 @@
 
 # load plugins after bashrc
 fpath=(~/.zsh/completion $fpath)
-autoload -Uz compinit && compinit -i
-
 
 # atuin (https://atuin.sh/)
 #

@@ -210,7 +210,6 @@ function urlencode(){
 }
 
 alias gtt="cd \"$(cat ~/.hacklas/.current-target)\""
-alias n2s='~/.hacklas/scripts/captains-log.sh'
 
 # BLACKLISTED FUNCTIONS!
 

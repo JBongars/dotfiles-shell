@@ -49,8 +49,8 @@ HISTSIZE=100000
 SAVEHIST=100000
 HISTFILE=~/.zsh_history
 
-autoload bashcompinit && bashcompinit
-autoload -Uz compinit && compinit
+autoload -Uz compinit && compinit -i
+autoload -U +X bashcompinit && bashcompinit
 
 
 # /Users/julien/.config/shell/src/zshrc/macos/101-mac-config.zsh
@@ -193,8 +193,6 @@ help() {
 
 # load plugins after bashrc
 fpath=(~/.zsh/completion $fpath)
-autoload -Uz compinit && compinit -i
-
 
 # atuin (https://atuin.sh/)
 #
@@ -225,8 +223,7 @@ complete -o nospace -C $(which terraform) terraform
 
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
 fpath=(/Users/julien/.docker/completions $fpath)
-autoload -Uz compinit
-compinit
+#
 # End of Docker CLI completions
 
 # /Users/julien/.config/shell/src/zshrc/unified/500-post-init.zsh
@@ -242,9 +239,6 @@ compinit
 
 # Post init custom scripts
 # PROMPT='[%F{cyan}%n%f@%F{cyan}%m%f %F{magenta}%1~%f]%# '
-
-autoload -Uz compinit && compinit -i
-autoload -U +X bashcompinit && bashcompinit
 
 # Enable color if terminal supports it
 if [[ -x /usr/bin/tput ]] && tput setaf 1 &>/dev/null; then
