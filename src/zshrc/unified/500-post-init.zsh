@@ -29,3 +29,5 @@ bindkey '^[[A' up-line-or-history
 bindkey '^[[B' down-line-or-history
 
 bindkey "^[[3~" delete-char
+
+zstyle ':completion:*' completer _expand _complete _files _ignored

@@ -227,7 +227,7 @@ _h_completions() {
 }
 compdef _h_completions h
 
-# /Users/julien/.config/shell/src/zshrc/unified/500-post-init.zsh
+# ~/.config/shell/src/zshrc/unified/500-post-init.zsh
 # ──────────────────────────────────────────────────
 
 # __________               __            .__       .__  __   
@@ -261,3 +261,5 @@ bindkey '^[[A' up-line-or-history
 bindkey '^[[B' down-line-or-history
 
 bindkey "^[[3~" delete-char
+
+zstyle ':completion:*' completer _expand _complete _files _ignored
