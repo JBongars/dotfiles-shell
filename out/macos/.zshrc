@@ -18,7 +18,7 @@
 # ══════════════════════════════════════════════════
 
 
-# /Users/julien/.config/shell/src/zshrc/unified/100-config.zsh
+# /home/julien/.config/shell/src/zshrc/unified/100-config.zsh
 # ──────────────────────────────────────────────────
 
 # _________                _____.__        
@@ -53,13 +53,13 @@ autoload -Uz compinit && compinit -i
 autoload -U +X bashcompinit && bashcompinit
 
 
-# /Users/julien/.config/shell/src/zshrc/macos/101-mac-config.zsh
+# /home/julien/.config/shell/src/zshrc/macos/101-mac-config.zsh
 # ──────────────────────────────────────────────────
 
 
 bindkey "^[[3~" delete-char # Mac sends the wrong character sequence for Del key
 
-# /Users/julien/.config/shell/src/zshrc/unified/200-help.zsh
+# /home/julien/.config/shell/src/zshrc/unified/200-help.zsh
 # ──────────────────────────────────────────────────
 
 #   ___ ___         .__          
@@ -167,7 +167,7 @@ help() {
   echo "$TERM_HELP_TEXT" | less
 }
 
-# /Users/julien/.config/shell/src/zshrc/unified/300-source-bashrc.zsh
+# /home/julien/.config/shell/src/zshrc/unified/300-source-bashrc.zsh
 # ──────────────────────────────────────────────────
 
 # __________               .__                   
@@ -180,7 +180,7 @@ help() {
 #
 [[ -f ~/.bashrc ]] && source ~/.bashrc
 
-# /Users/julien/.config/shell/src/zshrc/unified/400-plugins.zsh
+# /home/julien/.config/shell/src/zshrc/unified/400-plugins.zsh
 # ──────────────────────────────────────────────────
 
 # __________.__               .__               
@@ -208,7 +208,7 @@ eval "$(atuin init --disable-up-arrow zsh)"
 eval "$(atuin gen-completions --shell zsh)"
 
 
-# /Users/julien/.config/shell/src/zshrc/macos/401-plugins.zsh
+# /home/julien/.config/shell/src/zshrc/macos/401-plugins.zsh
 # ──────────────────────────────────────────────────
 
 # docker autocomplete
@@ -226,7 +226,7 @@ fpath=(/Users/julien/.docker/completions $fpath)
 #
 # End of Docker CLI completions
 
-# /Users/julien/.config/shell/src/zshrc/unified/500-post-init.zsh
+# /home/julien/.config/shell/src/zshrc/unified/500-post-init.zsh
 # ──────────────────────────────────────────────────
 
 # __________               __            .__       .__  __   
@@ -260,3 +260,5 @@ bindkey '^[[A' up-line-or-history
 bindkey '^[[B' down-line-or-history
 
 bindkey "^[[3~" delete-char
+
+zstyle ':completion:*' completer _expand _complete _files _ignored

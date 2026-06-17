@@ -18,11 +18,7 @@
 # ══════════════════════════════════════════════════
 
 
-# /Users/julien/.config/shell/src/zshrc/linux/.gitkeep
-# ──────────────────────────────────────────────────
-
-
-# /Users/julien/.config/shell/src/zshrc/unified/100-config.zsh
+# /home/julien/.config/shell/src/zshrc/unified/100-config.zsh
 # ──────────────────────────────────────────────────
 
 # _________                _____.__        
@@ -57,7 +53,7 @@ autoload -Uz compinit && compinit -i
 autoload -U +X bashcompinit && bashcompinit
 
 
-# /Users/julien/.config/shell/src/zshrc/unified/200-help.zsh
+# /home/julien/.config/shell/src/zshrc/unified/200-help.zsh
 # ──────────────────────────────────────────────────
 
 #   ___ ___         .__          
@@ -165,7 +161,7 @@ help() {
   echo "$TERM_HELP_TEXT" | less
 }
 
-# /Users/julien/.config/shell/src/zshrc/unified/300-source-bashrc.zsh
+# /home/julien/.config/shell/src/zshrc/unified/300-source-bashrc.zsh
 # ──────────────────────────────────────────────────
 
 # __________               .__                   
@@ -178,7 +174,7 @@ help() {
 #
 [[ -f ~/.bashrc ]] && source ~/.bashrc
 
-# /Users/julien/.config/shell/src/zshrc/unified/400-plugins.zsh
+# /home/julien/.config/shell/src/zshrc/unified/400-plugins.zsh
 # ──────────────────────────────────────────────────
 
 # __________.__               .__               
@@ -206,7 +202,7 @@ eval "$(atuin init --disable-up-arrow zsh)"
 eval "$(atuin gen-completions --shell zsh)"
 
 
-# /Users/julien/.config/shell/src/zshrc/linux/401-hacklas-plugins.zsh
+# /home/julien/.config/shell/src/zshrc/linux/401-hacklas-plugins.zsh
 # ──────────────────────────────────────────────────
 
 #   ___ ___                __   .__                 
@@ -227,7 +223,7 @@ _h_completions() {
 }
 compdef _h_completions h
 
-# ~/.config/shell/src/zshrc/unified/500-post-init.zsh
+# /home/julien/.config/shell/src/zshrc/unified/500-post-init.zsh
 # ──────────────────────────────────────────────────
 
 # __________               __            .__       .__  __   
@@ -263,3 +259,7 @@ bindkey '^[[B' down-line-or-history
 bindkey "^[[3~" delete-char
 
 zstyle ':completion:*' completer _expand _complete _files _ignored
+
+# /home/julien/.config/shell/src/zshrc/linux/.gitkeep
+# ──────────────────────────────────────────────────
+

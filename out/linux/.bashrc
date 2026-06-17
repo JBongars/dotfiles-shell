@@ -20,7 +20,7 @@
 # ══════════════════════════════════════════════════
 
 
-# /Users/julien/.config/shell/src/bashrc/unified/100-environment.sh
+# /home/julien/.config/shell/src/bashrc/unified/100-environment.sh
 # ──────────────────────────────────────────────────
 
 # ___________            
@@ -58,7 +58,7 @@ export HISTSIZE=100000
 export HISTFILESIZE=200000
 export HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S"
 
-# /Users/julien/.config/shell/src/bashrc/unified/200-config.sh
+# /home/julien/.config/shell/src/bashrc/unified/200-config.sh
 # ──────────────────────────────────────────────────
 
 #
@@ -80,7 +80,7 @@ if [[ -n "$BASH_VERSION" ]]; then
   [[ $- != *i* ]] && return
 fi
 
-# /Users/julien/.config/shell/src/bashrc/linux/201-config-compositor.sh
+# /home/julien/.config/shell/src/bashrc/linux/201-config-compositor.sh
 # ──────────────────────────────────────────────────
 
 if [[ -n "$WAYLAND_DISPLAY" ]]; then
@@ -88,7 +88,7 @@ if [[ -n "$WAYLAND_DISPLAY" ]]; then
     export XDG_SESSION_DESKTOP=sway
 fi
 
-# /Users/julien/.config/shell/src/bashrc/unified/300-aliases.sh
+# /home/julien/.config/shell/src/bashrc/unified/300-aliases.sh
 # ──────────────────────────────────────────────────
 
 #    _____  .__  .__                             
@@ -179,7 +179,7 @@ alias rg="rg -p -uu"
 # timestamp with format
 alias timestamp='date +"%Y%m%d%H%M%S"'
 
-# /Users/julien/.config/shell/src/bashrc/linux/301-aliases.sh
+# /home/julien/.config/shell/src/bashrc/linux/301-aliases.sh
 # ──────────────────────────────────────────────────
 
 if [[ -n "$WAYLAND_DISPLAY" ]]; then
@@ -190,7 +190,7 @@ elif command -v xclip &>/dev/null; then
     alias pbpaste='xclip -selection clipboard -o'
 fi
 
-# /Users/julien/.config/shell/src/bashrc/linux/302-hacklas-aliases.sh
+# /home/julien/.config/shell/src/bashrc/linux/302-hacklas-aliases.sh
 # ──────────────────────────────────────────────────
 
 #   ___ ___                __   .__                 
@@ -223,7 +223,7 @@ ffuf -w wordlist -u hostname -H \"Host: FUZZ.hostname\"
 "'
 
 
-# /Users/julien/.config/shell/src/bashrc/unified/400-plugins.sh
+# /home/julien/.config/shell/src/bashrc/unified/400-plugins.sh
 # ──────────────────────────────────────────────────
 
 # __________.__               .__               
@@ -250,7 +250,33 @@ if [[ -f "$HOME/.atuin/bin/env" ]]; then
     fi
 fi
 
-# /Users/julien/.config/shell/src/bashrc/unified/500-post-init.sh
+# /home/julien/.config/shell/src/bashrc/unified/401-xat.sh
+# ──────────────────────────────────────────────────
+
+xat() {
+    local f delim
+    for f in "$@"; do
+        if [[ ! -f "$f" ]]; then
+            printf 'catscript: %s: not a regular file\n' "$f" >&2
+            continue
+        fi
+
+        # Pick a delimiter that doesn't appear as a line in the file
+        delim=EOF
+        while grep -qxF "$delim" "$f"; do
+            delim="EOF_$RANDOM"
+        done
+
+        printf "cat > %s << '%s'\n" "$f" "$delim"
+        cat -- "$f"
+        # Add a newline only if the file doesn't already end with one,
+        # so the closing delimiter lands on its own line
+        [[ -n "$(tail -c1 -- "$f")" ]] && printf '\n'
+        printf '%s\n\n' "$delim"
+    done
+}
+
+# /home/julien/.config/shell/src/bashrc/unified/500-post-init.sh
 # ──────────────────────────────────────────────────
 
 # __________               __            .__       .__  __   
