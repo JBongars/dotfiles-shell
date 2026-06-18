@@ -18,7 +18,11 @@
 # ══════════════════════════════════════════════════
 
 
-# /home/julien/.config/shell/src/zshrc/unified/100-config.zsh
+# /Users/julien/.config/shell/src/zshrc/linux/.gitkeep
+# ──────────────────────────────────────────────────
+
+
+# /Users/julien/.config/shell/src/zshrc/unified/100-config.zsh
 # ──────────────────────────────────────────────────
 
 # _________                _____.__        
@@ -53,7 +57,7 @@ autoload -Uz compinit && compinit -i
 autoload -U +X bashcompinit && bashcompinit
 
 
-# /home/julien/.config/shell/src/zshrc/unified/200-help.zsh
+# /Users/julien/.config/shell/src/zshrc/unified/200-help.zsh
 # ──────────────────────────────────────────────────
 
 #   ___ ___         .__          
@@ -98,15 +102,15 @@ Basic Patterns                              Qualifiers (after closing paren)
 Modifiers (after :)                         *(Lk+3)         size > 3KB
 -------------------                         *(Lm+10)        size > 10MB
 *.txt(:t)       filename only (tail)        *(m-7)          modified < 7 days
-*.txt(:t:r)     filename without ext        *(mh-1)         modified < 1 hour
-*.txt(:e)       extension only              *(om)           order by mtime (newest first)
-*.txt(:h)       parent directory (head)     *(om[1,5])      5 most recent
-*.txt(:h:h)     grandparent directory
-*.txt([1]:h)    parent of first match       Combining: **/*(.Lm-2mh-1om[1,3])
+*.txt(:t:r)     filename without ext        *(mh-1)         modified < 1 hour 
+*.txt(:e)       extension only              *(mm-10)        modified < 10 mins
+*.txt(:h)       parent directory (head)     *(om)           order by mtime (newest first)
+*.txt(:h:h)     grandparent directory       *(om[1,5])      5 most recent
+*.txt([1]:h)    parent of first match                                                         
+                                            Combining: **/*(.Lm-2mh-1om[1,3])
                                               .       files only      om      sort by mtime
                                               Lm-2    < 2MB           [1,3]   first 3 results
                                               mh-1    modified < 1 hour
-
 Extended (setopt EXTENDED_GLOB)
 -------------------------------
 ^pattern        not matching pattern
@@ -161,7 +165,7 @@ help() {
   echo "$TERM_HELP_TEXT" | less
 }
 
-# /home/julien/.config/shell/src/zshrc/unified/300-source-bashrc.zsh
+# /Users/julien/.config/shell/src/zshrc/unified/300-source-bashrc.zsh
 # ──────────────────────────────────────────────────
 
 # __________               .__                   
@@ -174,7 +178,7 @@ help() {
 #
 [[ -f ~/.bashrc ]] && source ~/.bashrc
 
-# /home/julien/.config/shell/src/zshrc/unified/400-plugins.zsh
+# /Users/julien/.config/shell/src/zshrc/unified/400-plugins.zsh
 # ──────────────────────────────────────────────────
 
 # __________.__               .__               
@@ -202,7 +206,7 @@ eval "$(atuin init --disable-up-arrow zsh)"
 eval "$(atuin gen-completions --shell zsh)"
 
 
-# /home/julien/.config/shell/src/zshrc/linux/401-hacklas-plugins.zsh
+# /Users/julien/.config/shell/src/zshrc/linux/401-hacklas-plugins.zsh
 # ──────────────────────────────────────────────────
 
 #   ___ ___                __   .__                 
@@ -223,7 +227,7 @@ _h_completions() {
 }
 compdef _h_completions h
 
-# /home/julien/.config/shell/src/zshrc/unified/500-post-init.zsh
+# /Users/julien/.config/shell/src/zshrc/unified/500-post-init.zsh
 # ──────────────────────────────────────────────────
 
 # __________               __            .__       .__  __   
@@ -259,7 +263,3 @@ bindkey '^[[B' down-line-or-history
 bindkey "^[[3~" delete-char
 
 zstyle ':completion:*' completer _expand _complete _files _ignored
-
-# /home/julien/.config/shell/src/zshrc/linux/.gitkeep
-# ──────────────────────────────────────────────────
-

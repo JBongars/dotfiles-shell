@@ -40,15 +40,15 @@ Basic Patterns                              Qualifiers (after closing paren)
 Modifiers (after :)                         *(Lk+3)         size > 3KB
 -------------------                         *(Lm+10)        size > 10MB
 *.txt(:t)       filename only (tail)        *(m-7)          modified < 7 days
-*.txt(:t:r)     filename without ext        *(mh-1)         modified < 1 hour
-*.txt(:e)       extension only              *(om)           order by mtime (newest first)
-*.txt(:h)       parent directory (head)     *(om[1,5])      5 most recent
-*.txt(:h:h)     grandparent directory
-*.txt([1]:h)    parent of first match       Combining: **/*(.Lm-2mh-1om[1,3])
+*.txt(:t:r)     filename without ext        *(mh-1)         modified < 1 hour 
+*.txt(:e)       extension only              *(mm-10)        modified < 10 mins
+*.txt(:h)       parent directory (head)     *(om)           order by mtime (newest first)
+*.txt(:h:h)     grandparent directory       *(om[1,5])      5 most recent
+*.txt([1]:h)    parent of first match                                                         
+                                            Combining: **/*(.Lm-2mh-1om[1,3])
                                               .       files only      om      sort by mtime
                                               Lm-2    < 2MB           [1,3]   first 3 results
                                               mh-1    modified < 1 hour
-
 Extended (setopt EXTENDED_GLOB)
 -------------------------------
 ^pattern        not matching pattern

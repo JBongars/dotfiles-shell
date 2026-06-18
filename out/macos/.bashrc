@@ -20,7 +20,7 @@
 # ══════════════════════════════════════════════════
 
 
-# /home/julien/.config/shell/src/bashrc/unified/100-environment.sh
+# /Users/julien/.config/shell/src/bashrc/unified/100-environment.sh
 # ──────────────────────────────────────────────────
 
 # ___________            
@@ -58,7 +58,7 @@ export HISTSIZE=100000
 export HISTFILESIZE=200000
 export HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S"
 
-# /home/julien/.config/shell/src/bashrc/macos/101-environment.sh
+# /Users/julien/.config/shell/src/bashrc/macos/101-environment.sh
 # ──────────────────────────────────────────────────
 
 # export brew in path
@@ -78,11 +78,11 @@ export PATH="/opt/bin/bash:$PATH"
 
 # android stuff
 function init_android(){
-  export ANDROID_HOME=$HOME/Library/Android/sdk
-  export PATH=$PATH:$ANDROID_HOME/tools
-  export PATH=$PATH:$ANDROID_HOME/tools/bin
-  export PATH=$PATH:$ANDROID_HOME/platform-tools
-  export PATH=$PATH:$ANDROID_HOME/emulator
+  export ANDROID_HOME="$HOME/Library/Android/sdk"
+  export PATH="$PATH:$ANDROID_HOME/tools"
+  export PATH="$PATH:$ANDROID_HOME/tools/bin"
+  export PATH="$PATH:$ANDROID_HOME/platform-tools"
+  export PATH="$PATH:$ANDROID_HOME/emulator"
 }
 
 # Postgres
@@ -95,7 +95,7 @@ complete -C "/opt/homebrew/bin/aws_completer" aws
 export PATH="$HOME/.tfenv/bin:$PATH"
 
 
-# /home/julien/.config/shell/src/bashrc/unified/200-config.sh
+# /Users/julien/.config/shell/src/bashrc/unified/200-config.sh
 # ──────────────────────────────────────────────────
 
 #
@@ -117,7 +117,7 @@ if [[ -n "$BASH_VERSION" ]]; then
   [[ $- != *i* ]] && return
 fi
 
-# /home/julien/.config/shell/src/bashrc/unified/300-aliases.sh
+# /Users/julien/.config/shell/src/bashrc/unified/300-aliases.sh
 # ──────────────────────────────────────────────────
 
 #    _____  .__  .__                             
@@ -131,6 +131,7 @@ fi
 alias vi="nvim"
 alias vim="nvim"
 alias nano="nvim" # suck it
+alias office="soffice --headless" # cannot remember this for the life of me
 
 # should be using ripgrep (rg) if possible
 alias grep='grep --color=auto' 
@@ -202,13 +203,13 @@ function tldd() {
   curl -s "cheat.sh/$1" | noansi | nvim -c "setlocal buftype=nofile ft=bash" -
 }
 
-# default pretty, search hidden, search files in .gitignore
-alias rg="rg -p -uu"
+# default pretty, search hidden, search files in .gitignore, truncate lines longer than 5000 characters
+alias rg="rg -p -M 5000 -uu"
 
 # timestamp with format
 alias timestamp='date +"%Y%m%d%H%M%S"'
 
-# /home/julien/.config/shell/src/bashrc/macos/301-aliases.sh
+# /Users/julien/.config/shell/src/bashrc/macos/301-aliases.sh
 # ──────────────────────────────────────────────────
 
 # Get correct path for nvm
@@ -235,7 +236,7 @@ function pyenv() {
 
 alias tfi="tfenv install min-required && tfenv use min-required && terraform init"
 
-# /home/julien/.config/shell/src/bashrc/unified/400-plugins.sh
+# /Users/julien/.config/shell/src/bashrc/unified/400-plugins.sh
 # ──────────────────────────────────────────────────
 
 # __________.__               .__               
@@ -262,14 +263,14 @@ if [[ -f "$HOME/.atuin/bin/env" ]]; then
     fi
 fi
 
-# /home/julien/.config/shell/src/bashrc/unified/401-xat.sh
+# /Users/julien/.config/shell/src/bashrc/unified/401-xat.sh
 # ──────────────────────────────────────────────────
 
 xat() {
     local f delim
     for f in "$@"; do
         if [[ ! -f "$f" ]]; then
-            printf 'catscript: %s: not a regular file\n' "$f" >&2
+            printf 'xat: %s: not a regular file\n' "$f" >&2
             continue
         fi
 
@@ -279,8 +280,8 @@ xat() {
             delim="EOF_$RANDOM"
         done
 
-        printf "cat > %s << '%s'\n" "$f" "$delim"
-        cat -- "$f"
+        printf "\cat > %s << '%s'\n" "$f" "$delim"
+        \cat -- "$f"
         # Add a newline only if the file doesn't already end with one,
         # so the closing delimiter lands on its own line
         [[ -n "$(tail -c1 -- "$f")" ]] && printf '\n'
@@ -288,7 +289,7 @@ xat() {
     done
 }
 
-# /home/julien/.config/shell/src/bashrc/unified/500-post-init.sh
+# /Users/julien/.config/shell/src/bashrc/unified/500-post-init.sh
 # ──────────────────────────────────────────────────
 
 # __________               __            .__       .__  __   

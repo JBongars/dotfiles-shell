@@ -2,7 +2,7 @@ xat() {
     local f delim
     for f in "$@"; do
         if [[ ! -f "$f" ]]; then
-            printf 'catscript: %s: not a regular file\n' "$f" >&2
+            printf 'xat: %s: not a regular file\n' "$f" >&2
             continue
         fi
 
@@ -12,8 +12,8 @@ xat() {
             delim="EOF_$RANDOM"
         done
 
-        printf "cat > %s << '%s'\n" "$f" "$delim"
-        cat -- "$f"
+        printf "\cat > %s << '%s'\n" "$f" "$delim"
+        \cat -- "$f"
         # Add a newline only if the file doesn't already end with one,
         # so the closing delimiter lands on its own line
         [[ -n "$(tail -c1 -- "$f")" ]] && printf '\n'

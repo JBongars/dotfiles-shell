@@ -9,6 +9,7 @@
 alias vi="nvim"
 alias vim="nvim"
 alias nano="nvim" # suck it
+alias office="soffice --headless" # cannot remember this for the life of me
 
 # should be using ripgrep (rg) if possible
 alias grep='grep --color=auto' 
@@ -80,8 +81,8 @@ function tldd() {
   curl -s "cheat.sh/$1" | noansi | nvim -c "setlocal buftype=nofile ft=bash" -
 }
 
-# default pretty, search hidden, search files in .gitignore
-alias rg="rg -p -uu"
+# default pretty, search hidden, search files in .gitignore, truncate lines longer than 5000 characters
+alias rg="rg -p -M 5000 -uu"
 
 # timestamp with format
 alias timestamp='date +"%Y%m%d%H%M%S"'
