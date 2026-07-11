@@ -7,6 +7,13 @@
 # ----------------------------------
 
 h() {
+    if [ $# -eq 0 ]; then
+        if [ "$PWD" = "$HOME/.hacklas" ] ; then
+            return
+        fi
+        pushd "$HOME/.hacklas"
+        return
+    fi
     c=$1; shift
     bash "$HOME/.hacklas/scripts/${c}.sh" $@
 }

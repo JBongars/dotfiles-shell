@@ -5,7 +5,8 @@
 #  \___|_  /  \___  >____/   __/ 
 #        \/       \/     |__|    
 # ----------------------------------
-read -r -d '' TERM_HELP_TEXT <<'EOF'
+help() {
+  less <<'EOF'
                         .           
                       .'|           
                      <  |           
@@ -97,8 +98,4 @@ Alt-B / Alt-F       word backward / forward             Ctrl-C              inte
 Alt-D               kill word forward                   Tab                 autocomplete
 Alt-Backspace       kill word backward                  Alt-.               insert last argument
 EOF
-export TERM_HELP_TEXT
-
-help() {
-  echo "$TERM_HELP_TEXT" | less
 }

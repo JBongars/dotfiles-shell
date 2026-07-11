@@ -9,6 +9,25 @@ TARGETS=("bashrc" "zshrc")
 
 COMMAND="$1"
 
+function get_platform() {
+    if [ -f /etc/os-release ] ; then
+        if ( grep -o 'parrot' /etc/os-release ) || ( grep -o 'kali' /etc/os-release ) ; then
+            echo "parrot"
+        else
+            echo "linux"
+        fi
+    else
+        if [ -d '/Users' -a -d '/Applications' ] ; then
+            echo "mac"
+        elif [ -d '/mnt/c/Windows' ] ; then
+            echo "windows"
+        else
+            echo "none"
+        fi
+    fi
+
+}
+
 function cat_config() {
     local base_target_path=$1
     local platform=$2
