@@ -11,6 +11,8 @@ alias vim="nvim"
 alias nano="nvim" # suck it
 alias office="soffice --headless" # cannot remember this for the life of me
 
+alias rm="/usr/bin/rm -i"
+
 # should be using ripgrep (rg) if possible
 alias grep='grep --color=auto' 
 

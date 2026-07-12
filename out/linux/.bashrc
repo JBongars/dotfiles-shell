@@ -53,6 +53,9 @@ else
     export MANPAGER="less"
 fi
 
+# Default dvorak even without wayland
+export XKB_DEFAULT_LAYOUT=dvorak
+
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 export HISTSIZE=100000
 export HISTFILESIZE=200000
@@ -88,7 +91,7 @@ if [[ -n "$WAYLAND_DISPLAY" ]]; then
     export XDG_SESSION_DESKTOP=sway
 fi
 
-# /Users/julien/.config/shell/src/bashrc/unified/300-aliases.sh
+# /home/julien/.config/shell/src/bashrc/unified/300-aliases.sh
 # ──────────────────────────────────────────────────
 
 #    _____  .__  .__                             
@@ -103,6 +106,8 @@ alias vi="nvim"
 alias vim="nvim"
 alias nano="nvim" # suck it
 alias office="soffice --headless" # cannot remember this for the life of me
+
+alias rm="/usr/bin/rm -i"
 
 # should be using ripgrep (rg) if possible
 alias grep='grep --color=auto' 
